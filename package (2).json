@@ -1,0 +1,42 @@
+{
+  "name": "01_rcc-data",
+  "version": "1.0.0",
+  "author":"Dominik Sigmund",
+  "private": true,
+  "config":{
+    "loglevel":"silent"
+  },
+  "scripts": {
+    "global":"echo '=> Installing Global Modules' && npm install -g --save-dev pm2 mocha jshint istanbul markdown-html good-mocha-html-reporter raml2html jsdoc",
+
+    "test":"echo '=> test + coverage' &&  istanbul cover _mocha -- tests/* -R good-mocha-html-reporter",
+    "lint":"echo '=> lint:js' && jshint app.js && jshint routes/* && jshint controllers/*",
+
+    "gather":"echo '=> Gathering Docs' &&npm run gather:istanbul && npm run gather:markdown && npm run gather:mocha && npm run gather:raml && npm run gather:jsdoc",
+      "gather:istanbul":"rsync -avq coverage/ docs/coverage/ && rm -rf coverage/",
+      "gather:markdown":"markdown-html docs/index.md -o docs/index.html",
+      "gather:mocha":"mv report.html docs/mocha.html",
+      "gather:raml":"raml2html docs/routes.raml > docs/rest.html",
+      "gather:jsdoc":"jsdoc controllers/* routes/* app.js  -P package.json -d docs/jsdoc/ ",
+
+    "predev":"clear && echo '=> Dev - Building' && npm run lint && npm run test && npm run gather",
+    "dev":"echo '=> Dev-Mode for App' && node app.js 40123 debug",
+
+    "deploy":"echo '=> Deploying App' && npm install && npm run predev",
+
+    "start": "echo '=> Starting App' && pm2 start app.js --name 01_rcc-data"
+  },
+  "dependencies": {
+    "express": "*",
+    "nice-console":"*",
+    "socket.io": "*",
+    "js2xmlparser":"*",
+    "json2csv":"*",
+    "jsonfile":"*",
+    "body-parser":"*",
+    "request-json":"*",
+    "shortid":"*",
+    "moment":"*",
+    "bcrypt":"*"
+  }
+}
