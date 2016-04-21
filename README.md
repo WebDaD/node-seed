@@ -19,6 +19,13 @@ Generic-Controller (load onstart from files, serve data, save to files), Databas
 ## Manual
 Instructions to create a project from seed by hand.
 
+### How To Plant a Seed
+
+### How To Add Bower modules
+
+### How To Add node modules
+
+
 ---
 Remove below this line
 # TODO:
@@ -31,6 +38,10 @@ Remove below this line
 * create demoData
 * ask for name
 * ask for email
+* ask for Logo
+* ask for color main
+* ask for compColor
+* calc color 3 and 4 (3 = main font, whit on dark, black on light, 4 = active color similar fpr comColor)
 
 ## readme
 * List all commands from plant here, allowing for custom usage
@@ -42,7 +53,7 @@ Remove below this line
 * copy
   * https://www.npmjs.com/package/html-minifier > html-minifier --help
 * restart
-* generate real favicons from images/logo.png
+* https://github.com/RealFaviconGenerator/cli-real-favicon
 * stop (also stop debug)
 * dependencies ->reload
 * publish (test && copy && lint && minify && copies node_modules, public, app.js, conf, .... to specified server in package)
