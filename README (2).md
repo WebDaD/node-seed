@@ -1,3 +1,5 @@
+`wget -O -  http://fh-hfv-git01.hf.brnet.int/sigmundd/vks-control/blob/master/install.sh | bash`
+
 # VKS-Control
 
 Eine node.js-Applikation, die es Usern erlaubt, Ihnen erlaubte Quellen und Senken zu verbinden. Im Hintergrund werden CAN-Commandos verwendet, um die Schaltungen vorzunehmen.
@@ -141,4 +143,4 @@ remove below this
 * basic structure
 * controller
 * templates
-* 
+*
