@@ -30,6 +30,7 @@ Instructions to create a project from seed by hand.
 Remove below this line
 # TODO:
 
+Add logo (in docs) to README and to project in gitlab
 
 ## plant
 * create models
