@@ -1,7 +1,7 @@
 {
-  "name": "vks-control",
-  "version": "0.5.0",
-  "description": "The one and only",
+  "name": "[[seed:projectSlug]]",
+  "version": "0.0.1",
+  "description": "[[seed:projectMain]]",
   "moduleType": [
     "globals"
   ],

@@ -12,23 +12,53 @@ or see [Manual Planting](#manual)
 ->IMFB (in-memory-file-based)
 Generic-Controller (load onstart from files, serve data, save to files), Database-Folder (inApp), Model (json for objects)
 
+### Server
+
+### FrontEnd
+
 ## Manual
 Instructions to create a project from seed by hand.
 
 ---
 Remove below this line
 # TODO:
-Font awesome
-Modernizr?
-Docker
-Reload
-Bootstrap
-angular
 
+
+## plant
+* create models
+* create database
+* create repo
+* create demoData
+* ask for name
+* ask for email
+
+## readme
 * List all commands from plant here, allowing for custom usage
+* List scripts from package for manual calls
+* List Links
 
-* soft-deploy (copy files, run tests, gather docs)
 
-node mods (global, local)
-
-how to create a model and use it (json, raml)
+## package.json
+* copy
+  * https://www.npmjs.com/package/html-minifier > html-minifier --help
+* restart
+* generate real favicons from images/logo.png
+* stop (also stop debug)
+* dependencies ->reload
+* publish (test && copy && lint && minify && copies node_modules, public, app.js, conf, .... to specified server in package)
+## files
+* raml
+* create new readme.md (mv this to seed.md)
+* Assets
+  * html
+    * index uses layout. layout has debug switch
+  * css
+    * spinner
+  * js
+    * ang
+  * fonts
+    * add test font
+  * images
+    * add node-seed logo
+* app.js
+  * static public/

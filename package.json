@@ -1,14 +1,54 @@
 {
-  "name": "vks-control",
-  "version": "0.5.0",
+  "name": "[[seed:projectSlug]]",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "test":"",
-    "deploy":"",
-    "start": ""
+    "global":"echo '=> Installing Global Modules' && npm install -g --save-dev bower pm2 mocha standard istanbul markdown-html good-mocha-html-reporter raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli",
+
+    "test":"echo '=> Testing [[seed:projectName]]' && istanbul cover _mocha -- tests/* -R good-mocha-html-reporter",
+    "lint":"echo '=> Linting [[seed:projectName]]' && standard",
+
+    "copy":"echo '=> Copy Assets for [[seed:projectName]]' && npm run copy:folders && npm run copy:css && npm run copy:js && npm run copy:html && npm run copy:fonts && npm run copy:bower",
+      "copy:folders":"npm run copy:folders:create && npm run copy:folders:clean",
+        "copy:folders:create":"mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/html && mkdir -p public/js && mkdir -p public/html && mkdir -p public/css  && mkdir -p public/images && mkdir -p public/fonts",
+        "copy:folders:clean":"rm -rf tmp/css/* && rm -rf tmp/js && rm -rf tmp/html && rm -rf public/js && rm -rf public/html && rm -rf public/css  && rm -rf public/images && rm -rf public/fonts",
+
+      "copy:css":"cp assets/css/*.css tmp/css/* && lessc assets/main.less tmp/css/main.css",
+      "copy:js":"cp assets/js/*.js tmp/js/*",
+      "copy:html":"jade assets/html/*.jade -o tmp/html/",
+      "copy:fonts":"cp assets/fonts/* public/fonts/*",
+
+      "copy:bower":"npm run copy:bower:bootstrap && npm run copy:bower:angular && npm run copy:bower:jquery && npm run copy:bower:font-awesome",
+        "copy:bower:bootstrap":"cp",
+        "copy:bower:angular":"cp",
+        "copy:bower:jquery":"cp",
+        "copy:bower:font-awesome":"cp",
+
+    "minify":"npm run minifiy:html && npm run minify:js && npm run minify:css && npm run minify:images",
+      "minify:html":"html-minifier tmp/html/* -o public/html/*",
+      "minify:js":"uglifyjs tmp/js/* -o public/js/main.min.js -p 5 -c -m",
+      "minify:css":"uglifycss tmp/css/* > public/css/main.min.css",
+      "minify:images":"imagemin assets/images/* public/images",
+
+    "doc":"echo '=> Gathering Docs for [[seed:projectName]]' && npm run doc:istanbul && npm run doc:markdown && npm run doc:mocha && npm run doc:raml && npm run doc:jsdoc",
+      "doc:istanbul":"rsync -avq coverage/ docs/coverage/ && rm -rf coverage/",
+      "doc:markdown":"markdown-html docs/index.md -o docs/index.html && markdown-html README.md -o docs/readme.html && markdown-html seed.md -o docs/seed.html",
+      "doc:mocha":"mv report.html docs/mocha.html",
+      "doc:raml":"raml2html docs/routes.raml > docs/rest.html",
+      "doc:jsdoc":"jsdoc controllers/* routes/* app.js -d docs/jsdoc/ ",
+
+    "deploy":"echo '=> Deploying [[seed:projectName]]' && npm run global && npm install && bower install && npm run lint && npm run test && npm run copy && npm run minify && npm run doc && npm run start",
+    "start": "echo '=> Starting [[seed:projectName]]' && pm2 start app.js --name [[seed:projectSlug]]",
+
+    "debug": "echo '=> Starting [[seed:projectName]] in DEBUG MODE' && npm run debug:copy && npm run debug:start",
+      "debug:copy":"npm run copy && cp -r tmp/* public/*",
+      "debug:start":"pm2 start app.js --name [[seed:projectSlug]]_debug -- debug",
+
+    "publish":""
   },
   "dependencies": {
     "express": "*",
-    "nice-console": "*"
+    "nice-console": "*",
+    "reload":"*"
   }
 }
