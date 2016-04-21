@@ -7,6 +7,9 @@ echo -n "Your FolderName, Repo-Name, etc will be: ${projectSlug} [ENTER]"
 read nothing
 echo -n "Please Enter the Port for the WebInterface of Projekt and press [ENTER]: "
 read projectPort
+echo -n "Please Enter the Path to an Image and press [ENTER]: "
+read -e projectImage
+cp $projectImage assets/images/logo.png
 echo -n "Please Enter Name for starting Object (e.g. user) and press [ENTER]: "
 read objectName
 echo -n "Please Enter commaseperated Fields starting Object (e.g. id,name,mail) and press [ENTER]: "

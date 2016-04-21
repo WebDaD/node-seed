@@ -10,13 +10,14 @@
 
     "copy":"echo '=> Copy Assets for [[seed:projectName]]' && npm run copy:folders && npm run copy:css && npm run copy:js && npm run copy:html && npm run copy:fonts && npm run copy:bower",
       "copy:folders":"npm run copy:folders:create && npm run copy:folders:clean",
-        "copy:folders:create":"mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/html && mkdir -p public/js && mkdir -p public/html && mkdir -p public/css  && mkdir -p public/images && mkdir -p public/fonts",
-        "copy:folders:clean":"rm -rf tmp/css/* && rm -rf tmp/js && rm -rf tmp/html && rm -rf public/js && rm -rf public/html && rm -rf public/css  && rm -rf public/images && rm -rf public/fonts",
+        "copy:folders:create":"mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/html && mkdir -p tmp/images && mkdir -p public/js && mkdir -p public/html && mkdir -p public/css  && mkdir -p public/images && mkdir -p public/fonts",
+        "copy:folders:clean":"rm -rf tmp/css/* && rm -rf tmp/js && rm -rf tmp/html && rm -rf tmp/images && rm -rf public/js && rm -rf public/html && rm -rf public/css  && rm -rf public/images && rm -rf public/fonts",
 
       "copy:css":"cp assets/css/*.css tmp/css/* && lessc assets/main.less tmp/css/main.css",
       "copy:js":"cp assets/js/*.js tmp/js/*",
-      "copy:html":"jade assets/html/*.jade -o tmp/html/",
+      "copy:html":"jade assets/html/index.jade -o tmp/html/index.html && jade assets/html/index-debug.jade -o tmp/html/index-debug.html && jade assets/html/templates/*.jade -o tmp/html/",
       "copy:fonts":"cp assets/fonts/* public/fonts/*",
+      "copy:images":"generate && cp assets/images/* tmp/images/*",
 
       "copy:bower":"npm run copy:bower:bootstrap && npm run copy:bower:angular && npm run copy:bower:jquery && npm run copy:bower:font-awesome",
         "copy:bower:bootstrap":"cp",
@@ -28,7 +29,7 @@
       "minify:html":"html-minifier tmp/html/* -o public/html/*",
       "minify:js":"uglifyjs tmp/js/* -o public/js/main.min.js -p 5 -c -m",
       "minify:css":"uglifycss tmp/css/* > public/css/main.min.css",
-      "minify:images":"imagemin assets/images/* public/images",
+      "minify:images":"imagemin tmp/images/* public/images",
 
     "doc":"echo '=> Gathering Docs for [[seed:projectName]]' && npm run doc:istanbul && npm run doc:markdown && npm run doc:mocha && npm run doc:raml && npm run doc:jsdoc",
       "doc:istanbul":"rsync -avq coverage/ docs/coverage/ && rm -rf coverage/",

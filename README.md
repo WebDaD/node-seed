@@ -38,7 +38,6 @@ Remove below this line
 * create demoData
 * ask for name
 * ask for email
-* ask for Logo
 * ask for color main
 * ask for compColor
 * calc color 3 and 4 (3 = main font, whit on dark, black on light, 4 = active color similar fpr comColor)
@@ -55,6 +54,7 @@ Remove below this line
 * restart
 * https://github.com/RealFaviconGenerator/cli-real-favicon
 * stop (also stop debug)
+* jade -> only copy index, index-debug, templates/* (ang)
 * dependencies ->reload
 * publish (test && copy && lint && minify && copies node_modules, public, app.js, conf, .... to specified server in package)
 ## files
@@ -62,7 +62,7 @@ Remove below this line
 * create new readme.md (mv this to seed.md)
 * Assets
   * html
-    * index uses layout. layout has debug switch
+    * views
   * css
     * spinner
   * js
@@ -72,4 +72,8 @@ Remove below this line
   * images
     * add node-seed logo
 * app.js
-  * static public/
+  * static public/js, public/css, public/images, public/fonts
+  * index (debugswitch)
+  * templates
+  * controllers
+  * routes
