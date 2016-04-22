@@ -30,8 +30,6 @@ Instructions to create a project from seed by hand.
 Remove below this line
 # TODO:
 
-Add logo (in docs) to README and to project in gitlab
-
 ## plant
 * create models
 * create database
@@ -41,6 +39,8 @@ Add logo (in docs) to README and to project in gitlab
 * ask for email
 * ask for color main
 * ask for compColor
+* Plant add Apache and nginx IIS lightppd conf and detect Server and ask to copy and restart
+* Sed replace might need to escape []
 * calc color 3 and 4 (3 = main font, whit on dark, black on light, 4 = active color similar fpr comColor)
 
 ## readme
@@ -76,5 +76,5 @@ Add logo (in docs) to README and to project in gitlab
   * static public/js, public/css, public/images, public/fonts
   * index (debugswitch)
   * templates
-  * controllers
-  * routes
+  * controllers (like cfp)
+  * routes (like dubres)
